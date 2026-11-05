@@ -131,17 +131,14 @@ avec l'employé, en l'affectant avec l'administrateur, puis en ajoutant une note
 Les tests d'intégration vérifient notamment l'isolation entre employés, l'affectation,
 les droits du technicien et le blocage d'un incident clôturé.
 
-Les captures du parcours navigateur et les captures Postman réellement exécutées sont dans `output/captures/` et intégrées en annexe au rapport PDF. La collection Postman importable est dans `output/postman/`. Les captures suivent le parcours réellement lancé ; les inscriptions et reconnexions inutiles ont été omises. Le refresh token est facultatif et n’est pas implémenté.
+Le renouvellement automatique du jeton JWT n’est pas implémenté. Les rapports PDF, captures d’écran et autres fichiers générés localement sont placés dans `output/`. Ce dossier est ignoré par Git et ses fichiers ne sont donc pas inclus dans ce dépôt. Les diagrammes sources sont disponibles dans `docs/architecture.md`.
 
-## Livrables du TP
+## Contenu du dépôt
 
 - Backend Spring Boot : `backend/`.
 - Frontend React : `frontend/`.
-- Rapport PDF avec annexes de captures : `output/pdf/rapport_tp_spring_security_jwt_react.pdf`.
-- Diagrammes d’architecture et d’entités : `output/diagrams/diagrammes_application.pdf` ; source Mermaid : `docs/architecture.md`.
-- Captures de l’application et de Postman : `output/captures/`.
-- Collection Postman importable : `output/postman/`.
-- Démonstration fonctionnelle : parcours de l’employé à l’administrateur et au technicien documenté dans le rapport et illustré par les captures navigateur et API.
+- Diagrammes sources : `docs/architecture.md`.
+- Fichiers de rapport, captures et autres artefacts générés : conservés localement dans `output/`, dossier ignoré par Git.
 
 ## Choix techniques et références
 
