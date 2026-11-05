@@ -1,0 +1,27 @@
+backend/target/
+backend/data/
+frontend/node_modules/
+frontend/dist/
+.env
+.env.*
+*.log
+.idea/
+.vscode/
+frontend/test-results/
+frontend/playwright-report/
+
+# Fichiers locaux et sources de travail, non requis pour utiliser le projet
+/tmp/
+/.impeccable/
+/rapport-template/
+/devoir_jwt_spring_security_react.pdf
+/devoir_jwt_spring_security_react_template.pdf
+/template_report.tex
+/capture.cjs
+/capture_all_pages.cjs
+/diagnose.cjs
+/demo_result.json
+/email_crop.png
+/output/pdf/appendix-contact.png
+/output/pdf/check-*.png
+/output/pdf/review*.png

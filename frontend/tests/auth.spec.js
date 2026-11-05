@@ -1,0 +1,34 @@
+import { test, expect } from '@playwright/test';
+test('inscription, connexion, profil, déconnexion et route protégée', async ({ page }) => {
+  const email = `browser-${Date.now()}@example.com`;
+  await page.goto('/profile');
+  await expect(page).toHaveURL(/login/);
+  await page.getByRole('link', { name: 'Créer un compte' }).click();
+  await page.getByLabel('Nom complet').fill('Utilisateur de test');
+  await page.getByLabel('Email', { exact: true }).fill(email);
+  await page.getByLabel('Mot de passe', { exact: true }).fill('TestPassword123!');
+  await page.getByLabel('Confirmer le mot de passe', { exact: true }).fill('TestPassword123!');
+  await page.getByRole('button', { name: 'Créer mon compte' }).click();
+  await expect(page.getByRole('status')).toContainText('compte employé est créé');
+  await page.getByLabel('Email', { exact: true }).fill(email);
+  await page.getByLabel('Mot de passe', { exact: true }).fill('TestPassword123!');
+  await page.getByRole('button', { name: 'Se connecter' }).click();
+  await expect(page.getByRole('heading', { name: 'Mon profil' })).toBeVisible();
+  await page.getByLabel('Nom complet').fill('Profil modifié');
+  await page.getByRole('button', { name: 'Enregistrer les modifications' }).click();
+  await expect(page.getByRole('status')).toContainText('enregistré');
+  await page.reload();
+  await expect(page.getByLabel('Nom complet')).toHaveValue('Profil modifié');
+  await page.getByRole('button', { name: 'Se déconnecter' }).click();
+  await page.goto('/profile');
+  await expect(page).toHaveURL(/login/);
+});
+test('connexion lisible sur mobile sans débordement', async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto('/login');
+  await expect(page.getByRole('button', { name: 'Se connecter' })).toBeVisible();
+  expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+  await page.screenshot({ path: 'test-results/login-mobile.png', fullPage: true });
+  await page.setViewportSize({ width: 1440, height: 900 });
+  await page.screenshot({ path: 'test-results/login-desktop.png', fullPage: true });
+});
