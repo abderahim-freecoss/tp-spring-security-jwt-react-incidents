@@ -22,6 +22,4 @@ frontend/playwright-report/
 /diagnose.cjs
 /demo_result.json
 /email_crop.png
-/output/pdf/appendix-contact.png
-/output/pdf/check-*.png
-/output/pdf/*review*.png
+/output/
