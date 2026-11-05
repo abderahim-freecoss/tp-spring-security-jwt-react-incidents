@@ -24,4 +24,4 @@ frontend/playwright-report/
 /email_crop.png
 /output/pdf/appendix-contact.png
 /output/pdf/check-*.png
-/output/pdf/review*.png
+/output/pdf/*review*.png
